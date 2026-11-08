@@ -1,0 +1,4 @@
+name: "setup-pstack"
+title: "Setup Pstack"
+description: "Configure pstack for Muse: effort level, review-panel sizes, and verification strictness. Muse runs one model, so there is no per-role model choice."
+category: "Work and knowledge"

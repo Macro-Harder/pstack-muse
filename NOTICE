@@ -1,0 +1,59 @@
+pstack for Muse: unofficial adaptation
+=====================================
+
+This repo is a modified copy of pstack by Lauren Tan, taken from the
+cursor/plugins repository:
+
+  Source:   https://github.com/cursor/plugins/tree/main/pstack
+  Commit:   6b0300214a09fd6029cfb7077043125758cd1fd2 (pstack version 0.15.36)
+  License:  MIT, see LICENSE (kept verbatim, Copyright (c) 2026 Lauren Tan)
+
+It is not an official release and is not affiliated with or endorsed by the
+pstack author or Cursor. All credit for pstack goes to its author, Lauren Tan
+(@poteto, https://github.com/poteto). Nothing of hers was rebranded: this is
+"pstack, adapted for Muse", not a new work.
+
+Changes from upstream pstack/ (everything not listed here is the author's
+work, adapted only where the tooling differs):
+
+  1. Every skill, playbook, principle, guide page, agent, and automation
+     was adapted from Cursor / Claude Code tooling to Muse tooling. The
+     methodology is unchanged: go deep first, smallest verifiable units,
+     test-first where cheap, prove it works, delete before adding.
+     See PORTING-NOTES.md for the full Cursor-to-Muse mapping and for
+     anything deliberately left Cursor-specific.
+  2. Each skill gained a skill.yaml (Muse skill metadata: name, title,
+     description, category), matching the format Muse reads for
+     custom skills. The SKILL.md files keep their upstream frontmatter
+     where it still applies; Cursor-only frontmatter keys
+     (disable-model-invocation, icon, color, is_background) were dropped.
+  3. plugin.json at this root is adapted: name "pstack-muse", version
+     0.15.36, author Lauren Tan, license MIT. The "$schema" key was
+     removed; the manifest is informational, not schema-conformant.
+  4. .cursor-plugin/ was removed (Cursor-specific manifest). The upstream
+     manifest is at https://github.com/cursor/plugins/blob/main/pstack/.cursor-plugin/plugin.json.
+  5. docs/harness/claude-code.md (the Claude Code adapter) was replaced
+     by docs/harness/muse.md (the Muse adapter). The Claude adapter is
+     unchanged upstream at https://github.com/cursor/plugins/blob/main/pstack/docs/harness/claude-code.md.
+  6. Added this NOTICE file, PORTING-NOTES.md, and a replacement README.md.
+     The upstream README is at https://github.com/cursor/plugins/blob/main/pstack/README.md.
+
+Model routing: upstream pstack picks a model per role (code delegates to
+Grok, judgment to Opus 5.5) and /setup-pstack writes those choices to a
+Cursor rule. Muse runs one model, so there is no per-role model choice
+here. /setup-pstack in this port configures effort and fan-out preferences
+instead, and every delegate is a Muse subagent of the same model. The
+multi-model review panels become same-model independent runs; agreement
+between two independent runs is still high signal.
+
+What does not work in Muse (marked in place, not silently dropped):
+
+  - Cursor Automations and the /automate built-in (benny pack): the
+    triage / reproduce-and-fix skills are kept as manual skills, but
+    there is no automation runtime for them in Muse.
+  - Bugbot and the agentic security review (Cursor-only): the skeptical
+    review posture is kept; the Bugbot-specific steps are marked N/A.
+  - /loop, Custom Modes, and Cursor's built-in /create-skill: no Muse
+    equivalent; the ported text says so where it comes up.
+  - deslop, control-cli, control-ui: these ship in cursor-team-kit, which
+    is not ported here.

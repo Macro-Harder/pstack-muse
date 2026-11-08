@@ -1,0 +1,4 @@
+name: "principle-model-the-domain"
+title: "Model The Domain"
+description: "Apply when writing stateful logic, or when code branches a lot or repeats a shape assumption across files."
+category: "Work and knowledge"

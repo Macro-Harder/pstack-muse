@@ -1,0 +1,4 @@
+name: "principle-subtract-before-you-add"
+title: "Subtract Before You Add"
+description: "Apply when sequencing an addition, refactor, or rewrite. Remove dead code, redundant validators, and stub references first, then build on the simpler base."
+category: "Work and knowledge"

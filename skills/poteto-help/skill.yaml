@@ -1,0 +1,4 @@
+name: "poteto-help"
+title: "Poteto Help"
+description: "Guides users through pstack setup, poteto-mode, and picking the skill, playbook, or principle for a task. Ask poteto-help with a question."
+category: "Work and knowledge"
