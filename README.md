@@ -57,6 +57,11 @@ Muse. Stuck, or unsure which skill fits? Ask `poteto-help`.
 - `/loop`, Custom Modes, Bugbot, Cursor Automations, and the Claude Code adapter have no Muse
   equivalent and are marked N/A in place, not silently dropped.
 
-## License
+## License and attribution
 
-MIT. See [LICENSE](LICENSE) (Copyright (c) 2026 Lauren Tan, kept verbatim).
+pstack is Copyright (c) 2026 Lauren Tan ([@poteto](https://github.com/poteto)),
+licensed under the MIT License. This repository is an unofficial derivative work
+— a Muse port of pstack, originally published as part of
+[cursor/plugins](https://github.com/cursor/plugins). The original license text
+is reproduced in full in [LICENSE](LICENSE), kept verbatim as the MIT License
+requires. This port is not affiliated with or endorsed by Lauren Tan or Cursor.
